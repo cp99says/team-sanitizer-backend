@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/cp99says/team-sanitizer-backend#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -25,6 +26,7 @@
     "moment": "^2.29.1",
     "mongoose": "^5.13.0",
     "multer": "^1.4.2",
-    "uuid": "^8.3.2"
+    "uuid": "^8.3.2",
+    "xss-clean": "^0.1.1"
   }
 }
