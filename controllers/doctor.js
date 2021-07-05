@@ -111,7 +111,7 @@ exports.get_doctor_by_status = async (req, res) => {
 exports.get_doctor_by_fee_lt = async (req, res) => {
   try {
     const value = req.params.value;
-    const data = await doctor_profile.find({ fee: { $lt: value } });
+    const data = await doctor_profile.find({ fee: { $lte: value } });
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -129,11 +129,46 @@ exports.get_doctor_by_fee_lt = async (req, res) => {
 exports.get_doctor_by_fee_gt = async (req, res) => {
   try {
     const value = req.params.value;
-    const data = await doctor_profile.find({ fee: { $gt: value } });
+    const data = await doctor_profile.find({ fee: { $gte: value } });
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
         message: `doctor with fee greater than ${value} not found`,
+      });
+    } else {
+      res.json({
+        status: "success",
+        data,
+      });
+    }
+  } catch (error) {}
+};
+
+exports.get_doctor_by_experience_lt = async (req, res) => {
+  try {
+    const value = req.params.value;
+    const data = await doctor_profile.find({ experience: { $lte: value } });
+    if (data.length === 0) {
+      res.status(201).json({
+        status: "failure",
+        message: `doctor with experience less than ${value} not found`,
+      });
+    } else {
+      res.json({
+        status: "success",
+        data,
+      });
+    }
+  } catch (error) {}
+};
+exports.get_doctor_by_experience_gt = async (req, res) => {
+  try {
+    const value = req.params.value;
+    const data = await doctor_profile.find({ experience: { $gte: value } });
+    if (data.length === 0) {
+      res.status(201).json({
+        status: "failure",
+        message: `doctor with experience greater than ${value} not found`,
       });
     } else {
       res.json({
