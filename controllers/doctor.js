@@ -1,6 +1,6 @@
 const express = require("express");
-const patient_model = require("./../models/patient_profile.js");
-const doctor_profile = require("./../models/doctor_profile");
+const patient_model = require("../models/patient_profile.js");
+const doctor_profile = require("../models/doctor_profile");
 const { v4: uuidv4 } = require("uuid");
 const bcrypt = require("bcryptjs");
 const moment = require("moment");
@@ -108,4 +108,40 @@ exports.get_doctor_by_status = async (req, res) => {
     res.json(error);
   }
 };
-exports.get_doctor_by_fee = async (req, res) => {};
+exports.get_doctor_by_fee_lt = async (req, res) => {
+  try {
+    const compare = req.params.cmp;
+    const value = req.params.value;
+    const data = await doctor_profile.find({ fee: { $lt: value } });
+    if (data.length === 0) {
+      res.status(201).json({
+        status: "failure",
+        message: `doctor with speciality ${spec} not found`,
+      });
+    } else {
+      res.json({
+        status: "success",
+        data,
+      });
+    }
+  } catch (error) {}
+};
+
+exports.get_doctor_by_fee_gt = async (req, res) => {
+  try {
+    const compare = req.params.cmp;
+    const value = req.params.value;
+    const data = await doctor_profile.find({ fee: { $gt: value } });
+    if (data.length === 0) {
+      res.status(201).json({
+        status: "failure",
+        message: `doctor with speciality ${spec} not found`,
+      });
+    } else {
+      res.json({
+        status: "success",
+        data,
+      });
+    }
+  } catch (error) {}
+};
