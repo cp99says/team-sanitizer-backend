@@ -110,13 +110,12 @@ exports.get_doctor_by_status = async (req, res) => {
 };
 exports.get_doctor_by_fee_lt = async (req, res) => {
   try {
-    const compare = req.params.cmp;
     const value = req.params.value;
     const data = await doctor_profile.find({ fee: { $lt: value } });
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
-        message: `doctor with speciality ${spec} not found`,
+        message: `doctor with fee less than ${value} not found`,
       });
     } else {
       res.json({
@@ -129,13 +128,12 @@ exports.get_doctor_by_fee_lt = async (req, res) => {
 
 exports.get_doctor_by_fee_gt = async (req, res) => {
   try {
-    const compare = req.params.cmp;
     const value = req.params.value;
     const data = await doctor_profile.find({ fee: { $gt: value } });
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
-        message: `doctor with speciality ${spec} not found`,
+        message: `doctor with fee less than ${value} not found`,
       });
     } else {
       res.json({
