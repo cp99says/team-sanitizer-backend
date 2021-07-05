@@ -8,7 +8,7 @@ mongoose.connect(
   "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
   () => {
-    console.log(`connected to mongoDB atlas yo yo`);
+    console.log(`connected to mongoDB atlas`);
   }
 );
 // mongoose.connect(
