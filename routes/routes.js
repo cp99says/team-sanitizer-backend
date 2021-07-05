@@ -1,15 +1,15 @@
 const express = require("express");
 const app = express();
-const index = require("./../controllers/index");
+const doctor = require("../controllers/doctor");
 
 app
   .route("/doctor")
-  .get(index.get_all_doctor_details)
-  .post(index.send_doctor_details);
-
-app.route("/doctor/username").get(index.get_doctor_by_username);
-app.route("/doctor/speciality").get(index.get_doctor_by_speciality);
-app.route("/doctor/status").get(index.get_doctor_by_status);
-app.route("/doctor/fee").get(index.get_doctor_by_fee);
+  .get(doctor.get_all_doctor_details)
+  .post(doctor.send_doctor_details);
+app.route("/doctor/username").get(doctor.get_doctor_by_username);
+app.route("/doctor/speciality").get(doctor.get_doctor_by_speciality);
+app.route("/doctor/status").get(doctor.get_doctor_by_status);
+app.route("/doctor/fee/lt/:value").get(doctor.get_doctor_by_fee_lt);
+app.route("/doctor/fee/gt/:value").get(doctor.get_doctor_by_fee_gt);
 
 module.exports = app;
