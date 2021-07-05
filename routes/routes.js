@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const doctor = require("../controllers/doctor");
 
+// all doctor routes
+
 app
   .route("/doctor")
   .get(doctor.get_all_doctor_details)
@@ -17,5 +19,7 @@ app
 app
   .route("/doctor/experience/gt/:value")
   .get(doctor.get_doctor_by_experience_gt);
+
+//all patient routes
 
 module.exports = app;
