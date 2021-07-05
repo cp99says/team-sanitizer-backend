@@ -133,7 +133,7 @@ exports.get_doctor_by_fee_gt = async (req, res) => {
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
-        message: `doctor with fee less than ${value} not found`,
+        message: `doctor with fee greater than ${value} not found`,
       });
     } else {
       res.json({
