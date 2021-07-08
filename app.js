@@ -7,14 +7,14 @@ const profile = require("./routes/routes");
 
 mongoose.connect(
   "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
   () => {
     console.log(`connected to mongoDB atlas`);
   }
 );
 // mongoose.connect(
-//   "mongodb://localhost:27017/myapp",
-//   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+//   "mongodb://localhost:27017/HackRx2",
+//   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
 //   () => {
 //     console.log("connected to mongoDB local");
 //   }

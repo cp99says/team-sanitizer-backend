@@ -50,7 +50,7 @@ exports.get_all_doctor_details = async (req, res) => {
 
 exports.get_doctor_by_username = async (req, res) => {
   try {
-    const parameter = req.body.username;
+    const parameter = req.query.username;
     const data = await doctor_profile.find({ username: parameter });
     if (data.length === 0) {
       res.status(201).json({
@@ -70,7 +70,7 @@ exports.get_doctor_by_username = async (req, res) => {
 };
 exports.get_doctor_by_speciality = async (req, res) => {
   try {
-    const spec = req.body.speciality;
+    const spec = req.query.speciality;
     const data = await doctor_profile.find({ speciality: spec });
     if (data.length === 0) {
       res.status(201).json({
@@ -90,7 +90,7 @@ exports.get_doctor_by_speciality = async (req, res) => {
 };
 exports.get_doctor_by_status = async (req, res) => {
   try {
-    const status = req.body.status;
+    const status = req.query.status;
     const data = await doctor_profile.find({ status: status });
     if (data.length === 0) {
       res.status(201).json({
@@ -110,7 +110,7 @@ exports.get_doctor_by_status = async (req, res) => {
 };
 exports.get_doctor_by_fee_lt = async (req, res) => {
   try {
-    const value = req.params.value;
+    const value = req.query.value;
     const data = await doctor_profile.find({ fee: { $lte: value } });
     if (data.length === 0) {
       res.status(201).json({
@@ -128,7 +128,7 @@ exports.get_doctor_by_fee_lt = async (req, res) => {
 
 exports.get_doctor_by_fee_gt = async (req, res) => {
   try {
-    const value = req.params.value;
+    const value = req.query.value;
     const data = await doctor_profile.find({ fee: { $gte: value } });
     if (data.length === 0) {
       res.status(201).json({
@@ -146,7 +146,7 @@ exports.get_doctor_by_fee_gt = async (req, res) => {
 
 exports.get_doctor_by_experience_lt = async (req, res) => {
   try {
-    const value = req.params.value;
+    const value = req.query.value;
     const data = await doctor_profile.find({ experience: { $lte: value } });
     if (data.length === 0) {
       res.status(201).json({
@@ -163,7 +163,7 @@ exports.get_doctor_by_experience_lt = async (req, res) => {
 };
 exports.get_doctor_by_experience_gt = async (req, res) => {
   try {
-    const value = req.params.value;
+    const value = req.query.value;
     const data = await doctor_profile.find({ experience: { $gte: value } });
     if (data.length === 0) {
       res.status(201).json({
