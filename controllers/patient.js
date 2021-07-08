@@ -66,11 +66,34 @@ exports.send_patient_details = async (req, res) => {
   };
 
   exports.send_medical_details = async(req,res)=>{
-      const username=req.query.username
-      var date = moment().utcOffset("+05:30").format("MMMM Do YYYY, h:mm:ss a");
-      const id=req.query.id
-      const data= await patient_model.findOneAndUpdate({username:username},{
-          $push:{'medical_details':{'prescribed_on':date,'file_name':id}}
-      })
-      res.send(data)
+      try{
+        const username=req.query.username
+        var date = moment().utcOffset("+05:30").format("MMMM Do YYYY, h:mm:ss a");
+        const id=req.query.id
+        const user_exists=await patient_model.find({username:username})
+        console.log(user_exists)
+        if(user_exists.length === 0){
+          res.status(404).json({
+            status: "failure",
+            message: `patient with username ${username} not found`,
+          })
+        }
+        else{
+          const data= await patient_model.findOneAndUpdate({username:username},{
+            $push:{'medical_details':{'prescribed_on':date,'file_name':id}}
+        })
+        res.status(201).json({
+          status:'success',
+          dataUpdated:true,
+          data
+        })
+        }
+        //res.send(user_exists)
+        
+      }
+      catch(err){
+        console.log(error);
+        res.json(error);
+      }
+      
   }

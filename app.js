@@ -5,20 +5,20 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const profile = require("./routes/routes");
 
-mongoose.connect(
-  "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
-  () => {
-    console.log(`connected to mongoDB atlas`);
-  }
-);
 // mongoose.connect(
-//   "mongodb://localhost:27017/HackRx2",
+//   "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
 //   { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
 //   () => {
-//     console.log("connected to mongoDB local");
+//     console.log(`connected to mongoDB atlas`);
 //   }
 // );
+mongoose.connect(
+  "mongodb://localhost:27017/HackRx2",
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
+  () => {
+    console.log("connected to mongoDB local");
+  }
+);
 
 app.use(cors());
 app.get("/", (req, res) => {
