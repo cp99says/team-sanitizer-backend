@@ -11,6 +11,7 @@ const schema = mongoose.Schema({
   username: {
     type: String,
     required: true,
+    unique: [true, "Username already exists, please enter a unique username"],
   },
   password: {
     type: String,
@@ -20,10 +21,12 @@ const schema = mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: [true, "email already exists, please enter a unique email"],
   },
   phone: {
     type: String,
     required: true,
+    unique: [true, "phone already exists, please enter a unique phone"],
   },
   address: {
     type: String,
@@ -41,6 +44,14 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
+  medical_details:[{
+    prescribed_on:{
+      type:String,
+    },
+    file_name:{
+      type:String
+    }
+  }]
 });
 
 module.exports = mongoose.model("Patient_details", schema);
