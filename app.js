@@ -4,6 +4,11 @@ app.use(express.json());
 const cors = require("cors");
 const mongoose = require("mongoose");
 const profile = require("./routes/routes");
+const swaggerUi = require('swagger-ui-express');
+const yamljs = require('yamljs')
+const swaggerDocs=yamljs.load('./swagger.yaml')
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 mongoose.connect(
   "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",

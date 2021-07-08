@@ -26,7 +26,9 @@
     "moment": "^2.29.1",
     "mongoose": "^5.13.0",
     "multer": "^1.4.2",
+    "swagger-ui-express": "^4.1.6",
     "uuid": "^8.3.2",
-    "xss-clean": "^0.1.1"
+    "xss-clean": "^0.1.1",
+    "yamljs": "^0.3.0"
   }
 }
