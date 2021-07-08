@@ -1,0 +1,355 @@
+swagger: '2.0'
+info:
+  version: '1.0'
+  title: HackRx 2.0
+  contact: {}
+host: hrxapi.chetanpareek.tech
+basePath: /
+schemes:
+- https
+consumes:
+- application/json
+produces:
+- application/json
+paths:
+  /:
+    get:
+      summary: home route
+      tags:
+      - Misc
+      operationId: homeroute
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor:
+    post:
+      summary: send doctor details
+      tags:
+      - Misc
+      operationId: senddoctordetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/senddoctordetailsrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all doctor details
+      tags:
+      - Misc
+      operationId: getalldoctordetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/username:
+    get:
+      summary: get doctor by username
+      tags:
+      - Misc
+      operationId: getdoctorbyusername
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: username
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/speciality:
+    get:
+      summary: get doctor by speciality
+      tags:
+      - Misc
+      operationId: getdoctorbyspeciality
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: speciality
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/status:
+    get:
+      summary: get doctor by status
+      tags:
+      - Misc
+      operationId: getdoctorbystatus
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: status
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/fee/lt:
+    get:
+      summary: get doctors with fee less than amount
+      tags:
+      - Misc
+      operationId: getdoctorswithfeelessthanamount
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: value
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/fee/gt:
+    get:
+      summary: get doctors with fee greater than amount
+      tags:
+      - Misc
+      operationId: getdoctorswithfeegreaterthanamount
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: value
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/experience/lt:
+    get:
+      summary: get doctor with  experience less than time
+      tags:
+      - Misc
+      operationId: getdoctorwithexperiencelessthantime
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: value
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/doctor/experience/gt:
+    get:
+      summary: get doctor with  experience greater than time
+      tags:
+      - Misc
+      operationId: getdoctorwithexperiencegreaterthantime
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: value
+        in: query
+        required: true
+        type: integer
+        format: int32
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/patient:
+    post:
+      summary: send patient details
+      tags:
+      - Misc
+      operationId: sendpatientdetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/sendpatientdetailsrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+    get:
+      summary: get all patient details
+      tags:
+      - Misc
+      operationId: getallpatientdetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters: []
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/patient/username:
+    get:
+      summary: get patient by username
+      tags:
+      - Misc
+      operationId: getpatientbyusername
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: username
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+  /api/patient/send_medical_details:
+    post:
+      summary: send medical details with username and description id
+      tags:
+      - Misc
+      operationId: sendmedicaldetailswithusernameanddescriptionid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: username
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: id
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+definitions:
+  senddoctordetailsrequest:
+    title: senddoctordetailsrequest
+    example:
+      name: Chetan Pareek
+      username: cp99says
+      password: hala_madrid
+      speciality: dermatologist
+      address: place named none of your business
+      email: chetan@bajaj.com
+      phone: 7458963259
+      fee: 1600
+      experience: 8
+    type: object
+    properties:
+      name:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      speciality:
+        type: string
+      address:
+        type: string
+      email:
+        type: string
+      phone:
+        type: integer
+        format: int64
+      fee:
+        type: integer
+        format: int32
+      experience:
+        type: integer
+        format: int32
+    required:
+    - name
+    - username
+    - password
+    - speciality
+    - address
+    - email
+    - phone
+    - fee
+    - experience
+  sendpatientdetailsrequest:
+    title: sendpatientdetailsrequest
+    example:
+      name: Jeff Bezos
+      username: jeff@amazon
+      password: hala_madrid
+      email: jeff@amazon.com
+      phone: 7417417418
+      address: California, USA
+    type: object
+    properties:
+      name:
+        type: string
+      username:
+        type: string
+      password:
+        type: string
+      email:
+        type: string
+      phone:
+        type: integer
+        format: int64
+      address:
+        type: string
+    required:
+    - name
+    - username
+    - password
+    - email
+    - phone
+    - address
+tags:
+- name: Misc
+  description: ''
