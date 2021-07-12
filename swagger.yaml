@@ -106,7 +106,7 @@ paths:
           description: ''
           headers: {}
       security: []
-  /username:
+  /api/doctor/username:
     get:
       summary: get doctor by username
       tags:
@@ -229,7 +229,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /experience/lt:
+  /lt:
     get:
       summary: get doctor with  experience less than time
       tags:
@@ -254,7 +254,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /experience/gt:
+  /gt:
     get:
       summary: get doctor with  experience greater than time
       tags:
