@@ -38,6 +38,6 @@ app.use("/api/", profile);
 const PORT = 3500;
 
 app.listen(PORT, () => {
-  console.log(`server started at port: ${PORT}`);
+  console.log(`server started at port : ${PORT}`);
 });
 
