@@ -1,457 +1,477 @@
-swagger: '2.0'
+openapi: 3.0.0
 info:
-  version: '1.0'
   title: HackRx 2.0
   contact: {}
-host: hrxapi.chetanpareek.tech
-basePath: /
-securityDefinitions: {}
-schemes:
-- https
-- http
-consumes:
-- application/json
-produces:
-- application/json
+  version: '1.0'
+servers:
+- url: https://hrxapi.chetanpareek.tech
+  variables: {}
+- url: http://localhost:3500/api
+  variables: {}
+- url: http://example.com/api/doctor
+  variables: {}
 paths:
   /:
     get:
-      summary: home route
       tags:
       - Misc
+      summary: home route
       operationId: homeroute
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+      parameters: []
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/doctor:
     post:
+      tags:
+      - Misc
       summary: send doctor details
-      tags:
-      - Misc
       operationId: senddoctordetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
+      parameters: []
+      requestBody:
         description: ''
-        schema:
-          $ref: '#/definitions/senddoctordetailsrequest'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/senddoctordetailsrequest'
+            example:
+              name: Chetan Pareek
+              username: cp99says
+              password: hala_madrid
+              speciality: dermatologist
+              address: place named none of your business
+              email: chetan@bajaj.com
+              phone: 7458963259
+              fee: 1600
+              experience: 8
+        required: true
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
     get:
-      summary: get all doctor details
       tags:
       - Misc
+      summary: get all doctor details
       operationId: getalldoctordetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+      parameters: []
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /login:
     post:
-      summary: Login API
       tags:
       - Misc
+      summary: Login API
       operationId: LoginAPI
-      deprecated: false
-      produces:
-      - application/json
       parameters:
       - name: email
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: chetan@bajaj.com
       - name: role
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: doctor
       - name: password
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: hala_madrid
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
       security: []
+      servers:
+      - url: http://localhost:3500/api
+        variables: {}
   /username:
     get:
-      summary: get doctor by username
       tags:
       - Misc
+      summary: get doctor by username
       operationId: getdoctorbyusername
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: username
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: atif@jayaho
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: http://example.com/api/doctor
+        variables: {}
   /api/doctor/speciality:
     get:
-      summary: get doctor by speciality
       tags:
       - Misc
+      summary: get doctor by speciality
       operationId: getdoctorbyspeciality
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: speciality
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: sexologist
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/doctor/status:
     get:
-      summary: get doctor by status
       tags:
       - Misc
+      summary: get doctor by status
       operationId: getdoctorbystatus
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: status
         in: query
-        required: true
-        type: integer
-        format: int32
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 0
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/doctor/fee/lt:
     get:
-      summary: get doctors with fee less than amount
       tags:
       - Misc
+      summary: get doctors with fee less than amount
       operationId: getdoctorswithfeelessthanamount
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: value
         in: query
-        required: true
-        type: integer
-        format: int32
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 600
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/doctor/fee/gt:
     get:
-      summary: get doctors with fee greater than amount
       tags:
       - Misc
+      summary: get doctors with fee greater than amount
       operationId: getdoctorswithfeegreaterthanamount
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: value
         in: query
-        required: true
-        type: integer
-        format: int32
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 1800
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /experience/lt:
     get:
-      summary: get doctor with  experience less than time
       tags:
       - Misc
+      summary: get doctor with  experience less than time
       operationId: getdoctorwithexperiencelessthantime
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: value
         in: query
-        required: true
-        type: integer
-        format: int32
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 2
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: http://example.com/api/doctor
+        variables: {}
   /experience/gt:
     get:
-      summary: get doctor with  experience greater than time
       tags:
       - Misc
+      summary: get doctor with  experience greater than time
       operationId: getdoctorwithexperiencegreaterthantime
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: value
         in: query
-        required: true
-        type: integer
-        format: int32
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+          format: int32
+          example: 7
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: http://example.com/api/doctor
+        variables: {}
   /api/patient:
     post:
+      tags:
+      - Misc
       summary: send patient details
-      tags:
-      - Misc
       operationId: sendpatientdetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
+      parameters: []
+      requestBody:
         description: ''
-        schema:
-          $ref: '#/definitions/sendpatientdetailsrequest'
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/sendpatientdetailsrequest'
+            example:
+              name: Harshit Aggarwal
+              username: ha5409@srm
+              password: hala_madrid
+              email: ha5409@srm.co.in
+              phone: 17891497854
+              address: California, USA
+        required: true
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
     get:
-      summary: get all patient details
       tags:
       - Misc
+      summary: get all patient details
       operationId: getallpatientdetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+      parameters: []
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/patient/username:
     get:
-      summary: get patient by username
       tags:
       - Misc
+      summary: get patient by username
       operationId: getpatientbyusername
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: username
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: jeff@amazon
       responses:
         '200':
           description: ''
           headers: {}
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
   /api/patient/send_medical_details:
     post:
-      summary: send medical details with username and description id
       tags:
       - Misc
+      summary: send medical details with username and description id
       operationId: sendmedicaldetailswithusernameanddescriptionid
-      deprecated: false
-      produces:
-      - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: username
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: jeff@amazon
       - name: id
         in: query
-        required: true
-        type: string
         description: ''
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: string
+          example: random id
       responses:
         '200':
           description: ''
           headers: {}
-definitions:
-  senddoctordetailsrequest:
-    title: senddoctordetailsrequest
-    example:
-      name: Chetan Pareek
-      username: cp99says
-      password: hala_madrid
-      speciality: dermatologist
-      address: place named none of your business
-      email: chetan@bajaj.com
-      phone: 7458963259
-      fee: 1600
-      experience: 8
-    type: object
-    properties:
-      name:
-        type: string
-      username:
-        type: string
-      password:
-        type: string
-      speciality:
-        type: string
-      address:
-        type: string
-      email:
-        type: string
-      phone:
-        type: integer
-        format: int64
-      fee:
-        type: integer
-        format: int32
-      experience:
-        type: integer
-        format: int32
-    required:
-    - name
-    - username
-    - password
-    - speciality
-    - address
-    - email
-    - phone
-    - fee
-    - experience
-  sendpatientdetailsrequest:
-    title: sendpatientdetailsrequest
-    example:
-      name: Harshit Aggarwal
-      username: ha5409@srm
-      password: hala_madrid
-      email: ha5409@srm.co.in
-      phone: 17891497854
-      address: California, USA
-    type: object
-    properties:
-      name:
-        type: string
-      username:
-        type: string
-      password:
-        type: string
-      email:
-        type: string
-      phone:
-        type: integer
-        format: int64
-      address:
-        type: string
-    required:
-    - name
-    - username
-    - password
-    - email
-    - phone
-    - address
+      deprecated: false
+      servers:
+      - url: https://hrxapi.chetanpareek.tech
+        variables: {}
+components:
+  schemas:
+    senddoctordetailsrequest:
+      title: senddoctordetailsrequest
+      required:
+      - name
+      - username
+      - password
+      - speciality
+      - address
+      - email
+      - phone
+      - fee
+      - experience
+      type: object
+      properties:
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        speciality:
+          type: string
+        address:
+          type: string
+        email:
+          type: string
+        phone:
+          type: integer
+          format: int64
+        fee:
+          type: integer
+          format: int32
+        experience:
+          type: integer
+          format: int32
+      example:
+        name: Chetan Pareek
+        username: cp99says
+        password: hala_madrid
+        speciality: dermatologist
+        address: place named none of your business
+        email: chetan@bajaj.com
+        phone: 7458963259
+        fee: 1600
+        experience: 8
+    sendpatientdetailsrequest:
+      title: sendpatientdetailsrequest
+      required:
+      - name
+      - username
+      - password
+      - email
+      - phone
+      - address
+      type: object
+      properties:
+        name:
+          type: string
+        username:
+          type: string
+        password:
+          type: string
+        email:
+          type: string
+        phone:
+          type: integer
+          format: int64
+        address:
+          type: string
+      example:
+        name: Harshit Aggarwal
+        username: ha5409@srm
+        password: hala_madrid
+        email: ha5409@srm.co.in
+        phone: 17891497854
+        address: California, USA
+  securitySchemes:
+    httpBearer:
+      type: http
+      scheme: bearer
+security:
+- httpBearer: []
 tags:
 - name: Misc
   description: ''
