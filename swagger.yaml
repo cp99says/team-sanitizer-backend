@@ -5,8 +5,10 @@ info:
   contact: {}
 host: hrxapi.chetanpareek.tech
 basePath: /
+securityDefinitions: {}
 schemes:
 - https
+- http
 consumes:
 - application/json
 produces:
@@ -21,7 +23,12 @@ paths:
       deprecated: false
       produces:
       - application/json
-      parameters: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       responses:
         '200':
           description: ''
@@ -36,6 +43,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: Body
         in: body
         required: true
@@ -54,12 +66,47 @@ paths:
       deprecated: false
       produces:
       - application/json
-      parameters: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       responses:
         '200':
           description: ''
           headers: {}
-  /api/doctor/username:
+  /login:
+    post:
+      summary: Login API
+      tags:
+      - Misc
+      operationId: LoginAPI
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: email
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: role
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: password
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /username:
     get:
       summary: get doctor by username
       tags:
@@ -69,6 +116,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: username
         in: query
         required: true
@@ -88,6 +140,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: speciality
         in: query
         required: true
@@ -107,6 +164,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: status
         in: query
         required: true
@@ -127,6 +189,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: value
         in: query
         required: true
@@ -147,6 +214,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: value
         in: query
         required: true
@@ -157,7 +229,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /api/doctor/experience/lt:
+  /experience/lt:
     get:
       summary: get doctor with  experience less than time
       tags:
@@ -167,6 +239,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: value
         in: query
         required: true
@@ -177,7 +254,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /api/doctor/experience/gt:
+  /experience/gt:
     get:
       summary: get doctor with  experience greater than time
       tags:
@@ -187,6 +264,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: value
         in: query
         required: true
@@ -207,6 +289,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: Body
         in: body
         required: true
@@ -225,7 +312,12 @@ paths:
       deprecated: false
       produces:
       - application/json
-      parameters: []
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       responses:
         '200':
           description: ''
@@ -240,6 +332,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: username
         in: query
         required: true
@@ -259,6 +356,11 @@ paths:
       produces:
       - application/json
       parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
       - name: username
         in: query
         required: true
@@ -322,11 +424,11 @@ definitions:
   sendpatientdetailsrequest:
     title: sendpatientdetailsrequest
     example:
-      name: Jeff Bezos
-      username: jeff@amazon
+      name: Harshit Aggarwal
+      username: ha5409@srm
       password: hala_madrid
-      email: jeff@amazon.com
-      phone: 7417417418
+      email: ha5409@srm.co.in
+      phone: 17891497854
       address: California, USA
     type: object
     properties:
