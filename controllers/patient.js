@@ -20,11 +20,12 @@ exports.send_patient_details = async (req, res) => {
         status: 0,
         role: "patient",
         joined_on: date,        
-      });
+      }).select('-password');
       const patient_details = await data.save();
       res.status(201).json({
         status: "success",
         patient_details,
+        message:`user created with username ${req.body.username}`
       });
     } catch (err) {
       res.send(err);
@@ -33,7 +34,7 @@ exports.send_patient_details = async (req, res) => {
 
   exports.get_all_patient_details = async (req, res) => {
     try {
-      const patients = await patient_model.find();
+      const patients = await patient_model.find().select('-password');
       res.status(201).json({
         status: "success",
         total_patients: patients.length,
@@ -47,7 +48,7 @@ exports.send_patient_details = async (req, res) => {
   exports.get_patient_by_username = async (req, res) => {
     try {
       const parameter = req.query.username;
-      const data = await patient_model.find({ username: parameter });
+      const data = await patient_model.find({ username: parameter }).select('-password');
       if (data.length === 0) {
         res.status(201).json({
           status: "failure",
@@ -70,8 +71,7 @@ exports.send_patient_details = async (req, res) => {
         const username=req.query.username
         var date = moment().utcOffset("+05:30").format("MMMM Do YYYY, h:mm:ss a");
         const id=req.query.id
-        const user_exists=await patient_model.find({username:username})
-        console.log(user_exists)
+        const user_exists=await patient_model.find({username:username}).select('-password')
         if(user_exists.length === 0){
           res.status(404).json({
             status: "failure",
