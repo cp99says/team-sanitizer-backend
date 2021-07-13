@@ -4,10 +4,11 @@ const doctor = require("../controllers/doctor");
 const patient=require('../controllers/patient')
 const login=require('./../auth/login')
 const verify=require('./../auth/middlewares')
-
+const payments=require('./../controllers/payments')
 
 //login route
 app.route('/login').post(login.login)
+
 // all doctor routes
 
 app.route("/doctor").get(verify.verify,doctor.get_all_doctor_details).post(doctor.send_doctor_details);
@@ -26,5 +27,11 @@ app.route('/patient/username').get(verify.verify,patient.get_patient_by_username
 app.route('/patient/send_medical_details').post(patient.send_medical_details)
 
 
+//all payments routes
+
+app.route('/payments/get_order_id').get(payments.send_order_id)
+app.route('/payments/authorize_payments').get(payments.authorize_payments)
+
 
 module.exports = app;
+
