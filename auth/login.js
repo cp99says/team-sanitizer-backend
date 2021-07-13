@@ -82,6 +82,10 @@ exports.login=async(req,res)=>{
                     break;
         
             default:
+              return res.json({
+                status:"failure",
+                message: "login failure, please provide a valid role"                        
+            }) 
                 break;
         }
     }
