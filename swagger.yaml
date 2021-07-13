@@ -358,6 +358,61 @@ paths:
           description: ''
           headers: {}
       security: []
+  /api/payments/get_order_id:
+    get:
+      summary: initiate order id
+      tags:
+      - Misc
+      operationId: initiateorderid
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: issued_by
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: patient_username
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+  /api/payments/authorize_payments:
+    get:
+      summary: authorize payments
+      tags:
+      - Misc
+      operationId: authorizepayments
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: issued_to
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: payment_id
+        in: query
+        required: true
+        type: string
+        description: ''
+      - name: signature
+        in: query
+        required: true
+        type: string
+        description: ''
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
 definitions:
   senddoctordetailsrequest:
     title: senddoctordetailsrequest
