@@ -29,7 +29,7 @@ paths:
           description: ''
           headers: {}
       security: []
-  /login:
+  /api/login:
     post:
       summary: Login API
       tags:
@@ -221,7 +221,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /lt:
+  /api/doctor/experience/lt:
     get:
       summary: get doctor with  experience less than time
       tags:
@@ -246,7 +246,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /gt:
+  /api/doctor/experience/gt:
     get:
       summary: get doctor with  experience greater than time
       tags:
