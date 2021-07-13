@@ -44,11 +44,6 @@ paths:
         required: true
         type: string
         description: ''
-      - name: role
-        in: query
-        required: true
-        type: string
-        description: ''
       - name: password
         in: query
         required: true
@@ -246,7 +241,7 @@ paths:
         '200':
           description: ''
           headers: {}
-  /api/doctor/experience/gt:
+  /gt:
     get:
       summary: get doctor with  experience greater than time
       tags:
