@@ -23,59 +23,12 @@ paths:
       deprecated: false
       produces:
       - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+      parameters: []
       responses:
         '200':
           description: ''
           headers: {}
-  /api/doctor:
-    post:
-      summary: send doctor details
-      tags:
-      - Misc
-      operationId: senddoctordetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/senddoctordetailsrequest'
-      responses:
-        '200':
-          description: ''
-          headers: {}
-    get:
-      summary: get all doctor details
-      tags:
-      - Misc
-      operationId: getalldoctordetails
-      deprecated: false
-      produces:
-      - application/json
-      parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      responses:
-        '200':
-          description: ''
-          headers: {}
+      security: []
   /login:
     post:
       summary: Login API
@@ -106,6 +59,45 @@ paths:
           description: ''
           headers: {}
       security: []
+  /api/doctor:
+    post:
+      summary: send doctor details
+      tags:
+      - Misc
+      operationId: senddoctordetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Body
+        in: body
+        required: true
+        description: ''
+        schema:
+          $ref: '#/definitions/senddoctordetailsrequest'
+      responses:
+        '200':
+          description: ''
+          headers: {}
+      security: []
+    get:
+      summary: get all doctor details
+      tags:
+      - Misc
+      operationId: getalldoctordetails
+      deprecated: false
+      produces:
+      - application/json
+      parameters:
+      - name: Authorization
+        in: header
+        required: false
+        default: Bearer {token}
+        type: string
+      responses:
+        '200':
+          description: ''
+          headers: {}
   /api/doctor/username:
     get:
       summary: get doctor by username
@@ -356,11 +348,6 @@ paths:
       produces:
       - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
       - name: username
         in: query
         required: true
@@ -375,6 +362,7 @@ paths:
         '200':
           description: ''
           headers: {}
+      security: []
 definitions:
   senddoctordetailsrequest:
     title: senddoctordetailsrequest
