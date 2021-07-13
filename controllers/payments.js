@@ -60,7 +60,7 @@ exports.send_order_id = async(req,res)=>{
 
 exports.authorize_payments= async(req,res)=>{
     const issued_to = req.query.issued_to
-    const data = await payments_model.find({patient_username:issued_to})
+    const data = await payments_model.find({patient_username:issued_to}).sort({_id: -1})
     if(data.length == 0){
         return res.status(404).json({
             status: "failure",
