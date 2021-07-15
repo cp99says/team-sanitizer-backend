@@ -22,7 +22,7 @@ app.route("/doctor/experience/gt").get(verify.verify,doctor.get_doctor_by_experi
 
 //all patient routes
 
-app.route('/patient').get(verify.verify,patient.get_all_patient_details).post(patient.send_patient_details)
+app.route('/patient').get(patient.get_all_patient_details).post(patient.send_patient_details)
 app.route('/patient/username').get(verify.verify,patient.get_patient_by_username)
 app.route('/patient/send_medical_details').post(patient.send_medical_details)
 

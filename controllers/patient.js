@@ -20,11 +20,10 @@ exports.send_patient_details = async (req, res) => {
         status: 0,
         role: "patient",
         joined_on: date,        
-      }).select('-password');
+      });
       const patient_details = await data.save();
       res.status(201).json({
         status: "success",
-        patient_details,
         message:`user created with username ${req.body.username}`
       });
     } catch (err) {
