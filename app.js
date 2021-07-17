@@ -4,16 +4,20 @@ app.use(express.json());
 const cors = require("cors");
 const mongoose = require("mongoose");
 const profile = require("./routes/routes");
-const swaggerUi = require('swagger-ui-express');
-const yamljs = require('yamljs')
-const swaggerDocs=yamljs.load('./swagger.yaml')
+const swaggerUi = require("swagger-ui-express");
+const yamljs = require("yamljs");
+const swaggerDocs = yamljs.load("./swagger.yaml");
 
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 mongoose.connect(
   "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
-  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify:true },
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true,
+    useFindAndModify: true,
+  },
   () => {
     console.log(`connected to mongoDB atlas`);
   }
@@ -33,11 +37,8 @@ app.get("/", (req, res) => {
 //routes
 app.use("/api/", profile);
 
-
-
 const PORT = 3500;
 
 app.listen(PORT, () => {
   console.log(`server started at port : ${PORT}`);
 });
-

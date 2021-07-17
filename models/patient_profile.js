@@ -43,14 +43,16 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
-  medical_details:[{
-    prescribed_on:{
-      type:String,
+  medical_details: [
+    {
+      prescribed_on: {
+        type: String,
+      },
+      file_name: {
+        type: String,
+      },
     },
-    file_name:{
-      type:String
-    }
-  }]
+  ],
 });
 
 module.exports = mongoose.model("Patient_details", schema);
