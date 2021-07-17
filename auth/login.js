@@ -33,11 +33,12 @@ exports.login = async (req, res, next) => {
   var correct_password = await bcryptjs.compare(pswd, data[0].password);
   //console.log(data);
   if (correct_password) {
+    //console.log(data[0].unique_id);
     var token = jwt.sign(
       {
         username: data[0].username,
         email: data[0].email,
-        id: data[0].patient_id,
+        unique_id: data[0].unique_id,
         phone: data[0].phone,
         role: data[0].role,
         status: data[0].status,
@@ -46,7 +47,7 @@ exports.login = async (req, res, next) => {
       { expiresIn: "30m" }
     );
     var decoded_values = jwt.decode(token, process.env.jwtSecret);
-    // console.log(decoded_token);
+    // console.log(decoded_values);
     return res.json({
       status: "success",
       message: "login successful",
