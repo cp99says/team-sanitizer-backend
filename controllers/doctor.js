@@ -37,7 +37,7 @@ exports.send_doctor_details = async (req, res) => {
 
 exports.get_all_doctor_details = async (req, res) => {
   try {
-    const doctors = await doctor_profile.find().select('-password');
+    const doctors = await doctor_profile.find().select("-password");
     res.status(201).json({
       status: "success",
       total_doctors: doctors.length,
@@ -51,7 +51,9 @@ exports.get_all_doctor_details = async (req, res) => {
 exports.get_doctor_by_username = async (req, res) => {
   try {
     const parameter = req.query.username;
-    const data = await doctor_profile.find({ username: parameter }).select('-password');
+    const data = await doctor_profile
+      .find({ username: parameter })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -71,7 +73,9 @@ exports.get_doctor_by_username = async (req, res) => {
 exports.get_doctor_by_speciality = async (req, res) => {
   try {
     const spec = req.query.speciality;
-    const data = await doctor_profile.find({ speciality: spec }).select('-password');
+    const data = await doctor_profile
+      .find({ speciality: spec })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -91,7 +95,9 @@ exports.get_doctor_by_speciality = async (req, res) => {
 exports.get_doctor_by_status = async (req, res) => {
   try {
     const status = req.query.status;
-    const data = await doctor_profile.find({ status: status }).select('-password');
+    const data = await doctor_profile
+      .find({ status: status })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -111,7 +117,9 @@ exports.get_doctor_by_status = async (req, res) => {
 exports.get_doctor_by_fee_lt = async (req, res) => {
   try {
     const value = req.query.value;
-    const data = await doctor_profile.find({ fee: { $lte: value } }).select('-password');
+    const data = await doctor_profile
+      .find({ fee: { $lte: value } })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -132,7 +140,9 @@ exports.get_doctor_by_fee_lt = async (req, res) => {
 exports.get_doctor_by_fee_gt = async (req, res) => {
   try {
     const value = req.query.value;
-    const data = await doctor_profile.find({ fee: { $gte: value } }).select('-password');
+    const data = await doctor_profile
+      .find({ fee: { $gte: value } })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -153,7 +163,9 @@ exports.get_doctor_by_fee_gt = async (req, res) => {
 exports.get_doctor_by_experience_lt = async (req, res) => {
   try {
     const value = req.query.value;
-    const data = await doctor_profile.find({ experience: { $lte: value } }).select('-password');
+    const data = await doctor_profile
+      .find({ experience: { $lte: value } })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",
@@ -173,7 +185,9 @@ exports.get_doctor_by_experience_lt = async (req, res) => {
 exports.get_doctor_by_experience_gt = async (req, res) => {
   try {
     const value = req.query.value;
-    const data = await doctor_profile.find({ experience: { $gte: value } }).select('-password');
+    const data = await doctor_profile
+      .find({ experience: { $gte: value } })
+      .select("-password");
     if (data.length === 0) {
       res.status(201).json({
         status: "failure",

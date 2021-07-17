@@ -1,416 +1,416 @@
-swagger: '2.0'
+swagger: "2.0"
 info:
-  version: '1.0'
+  version: "1.0"
   title: HackRx 2.0
   contact: {}
 host: hrxapi.chetanpareek.tech
 basePath: /
 securityDefinitions: {}
 schemes:
-- https
-- http
+  - https
+  - http
 consumes:
-- application/json
+  - application/json
 produces:
-- application/json
+  - application/json
 paths:
   /:
     get:
       summary: home route
       tags:
-      - Misc
+        - Misc
       operationId: homeroute
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters: []
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
   /api/login:
     post:
       summary: Login API
       tags:
-      - Misc
+        - Misc
       operationId: LoginAPI
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: email
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: password
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: email
+          in: query
+          required: true
+          type: string
+          description: ""
+        - name: password
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
   /api/doctor:
     post:
       summary: send doctor details
       tags:
-      - Misc
+        - Misc
       operationId: senddoctordetails
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/senddoctordetailsrequest'
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/senddoctordetailsrequest"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
     get:
       summary: get all doctor details
       tags:
-      - Misc
+        - Misc
       operationId: getalldoctordetails
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/username:
     get:
       summary: get doctor by username
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorbyusername
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: username
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/speciality:
     get:
       summary: get doctor by speciality
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorbyspeciality
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: speciality
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: speciality
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/status:
     get:
       summary: get doctor by status
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorbystatus
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: status
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: status
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/fee/lt:
     get:
       summary: get doctors with fee less than amount
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorswithfeelessthanamount
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: value
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: value
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/fee/gt:
     get:
       summary: get doctors with fee greater than amount
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorswithfeegreaterthanamount
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: value
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: value
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/doctor/experience/lt:
     get:
       summary: get doctor with  experience less than time
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorwithexperiencelessthantime
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: value
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: value
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /gt:
     get:
       summary: get doctor with  experience greater than time
       tags:
-      - Misc
+        - Misc
       operationId: getdoctorwithexperiencegreaterthantime
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: value
-        in: query
-        required: true
-        type: integer
-        format: int32
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: value
+          in: query
+          required: true
+          type: integer
+          format: int32
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/patient:
     post:
       summary: send patient details
       tags:
-      - Misc
+        - Misc
       operationId: sendpatientdetails
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: Body
-        in: body
-        required: true
-        description: ''
-        schema:
-          $ref: '#/definitions/sendpatientdetailsrequest'
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: Body
+          in: body
+          required: true
+          description: ""
+          schema:
+            $ref: "#/definitions/sendpatientdetailsrequest"
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
     get:
       summary: get all patient details
       tags:
-      - Misc
+        - Misc
       operationId: getallpatientdetails
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/patient/username:
     get:
       summary: get patient by username
       tags:
-      - Misc
+        - Misc
       operationId: getpatientbyusername
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: Authorization
-        in: header
-        required: false
-        default: Bearer {token}
-        type: string
-      - name: username
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
   /api/patient/send_medical_details:
     post:
       summary: send medical details with username and description id
       tags:
-      - Misc
+        - Misc
       operationId: sendmedicaldetailswithusernameanddescriptionid
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: username
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: id
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: username
+          in: query
+          required: true
+          type: string
+          description: ""
+        - name: id
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
   /api/payments/get_order_id:
     get:
       summary: initiate order id
       tags:
-      - Misc
+        - Misc
       operationId: initiateorderid
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: issued_by
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: patient_username
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: issued_by
+          in: query
+          required: true
+          type: string
+          description: ""
+        - name: patient_username
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
   /api/payments/authorize_payments:
     get:
       summary: authorize payments
       tags:
-      - Misc
+        - Misc
       operationId: authorizepayments
       deprecated: false
       produces:
-      - application/json
+        - application/json
       parameters:
-      - name: issued_to
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: payment_id
-        in: query
-        required: true
-        type: string
-        description: ''
-      - name: signature
-        in: query
-        required: true
-        type: string
-        description: ''
+        - name: issued_to
+          in: query
+          required: true
+          type: string
+          description: ""
+        - name: payment_id
+          in: query
+          required: true
+          type: string
+          description: ""
+        - name: signature
+          in: query
+          required: true
+          type: string
+          description: ""
       responses:
-        '200':
-          description: ''
+        "200":
+          description: ""
           headers: {}
       security: []
 definitions:
@@ -450,15 +450,15 @@ definitions:
         type: integer
         format: int32
     required:
-    - name
-    - username
-    - password
-    - speciality
-    - address
-    - email
-    - phone
-    - fee
-    - experience
+      - name
+      - username
+      - password
+      - speciality
+      - address
+      - email
+      - phone
+      - fee
+      - experience
   sendpatientdetailsrequest:
     title: sendpatientdetailsrequest
     example:
@@ -484,12 +484,12 @@ definitions:
       address:
         type: string
     required:
-    - name
-    - username
-    - password
-    - email
-    - phone
-    - address
+      - name
+      - username
+      - password
+      - email
+      - phone
+      - address
 tags:
-- name: Misc
-  description: ''
+  - name: Misc
+    description: ""
