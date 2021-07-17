@@ -4,7 +4,7 @@ const schema = mongoose.Schema({
     type: String,
     required: true,
   },
-  doctor_id: {
+  unique_id: {
     type: String,
     required: true,
   },
