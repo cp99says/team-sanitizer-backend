@@ -204,3 +204,27 @@ exports.get_doctor_by_experience_gt = async (req, res) => {
     res.json(error);
   }
 };
+
+exports.get_doctor_by_unique_id = async (req, res) => {
+  try {
+    const id = req.query.unique_id;
+    const data = await doctor_profile
+      .findOne({ unique_id: id })
+      .select("-password");
+    if (data == null) {
+      return res.json({
+        status: "failure",
+        message: `doctor with unique_id ${id} not found`,
+      });
+    } else {
+      return res.json({
+        status: "success",
+        data,
+      });
+    }
+    res.send(data);
+  } catch (error) {
+    console.log(error);
+    res.json(error);
+  }
+};

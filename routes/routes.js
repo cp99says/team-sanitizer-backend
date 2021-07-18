@@ -16,6 +16,7 @@ app
   .get(verify.verify, doctor.get_all_doctor_details)
   .post(doctor.send_doctor_details);
 app.route("/doctor/username").get(verify.verify, doctor.get_doctor_by_username);
+
 app
   .route("/doctor/speciality")
   .get(verify.verify, doctor.get_doctor_by_speciality);
@@ -29,6 +30,9 @@ app
   .route("/doctor/experience/gt")
   .get(verify.verify, doctor.get_doctor_by_experience_gt);
 
+app
+  .route("/doctor/unique_id")
+  .get(verify.verify, doctor.get_doctor_by_unique_id);
 //all patient routes
 
 app
@@ -39,6 +43,9 @@ app
   .route("/patient/username")
   .get(verify.verify, patient.get_patient_by_username);
 app.route("/patient/send_medical_details").post(patient.send_medical_details);
+app
+  .route("/patient/unique_id")
+  .get(verify.verify, patient.get_patient_by_unique_id);
 
 //all payments routes
 
