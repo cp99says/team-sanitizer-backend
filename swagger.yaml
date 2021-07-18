@@ -266,6 +266,30 @@ paths:
         "200":
           description: ""
           headers: {}
+  /api/doctor/unique_id:
+    get:
+      summary: get doctor by unique id
+      tags:
+        - Misc
+      operationId: getdoctorbyuniqueid
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: unique_id
+          in: query
+          required: true
+          type: string
+          description: ""
+      responses:
+        "200":
+          description: ""
+          headers: {}
   /api/patient:
     post:
       summary: send patient details
@@ -413,19 +437,43 @@ paths:
           description: ""
           headers: {}
       security: []
+  /api/patient/unique_id:
+    get:
+      summary: get patient by unique id
+      tags:
+        - Misc
+      operationId: getpatientbyuniqueid
+      deprecated: false
+      produces:
+        - application/json
+      parameters:
+        - name: Authorization
+          in: header
+          required: false
+          default: Bearer {token}
+          type: string
+        - name: unique_id
+          in: query
+          required: true
+          type: string
+          description: ""
+      responses:
+        "200":
+          description: ""
+          headers: {}
 definitions:
   senddoctordetailsrequest:
     title: senddoctordetailsrequest
     example:
       name: Chetan Pareek
-      username: cp99says
+      username: this.side.pareek
       password: hala_madrid
       speciality: dermatologist
       address: place named none of your business
-      email: chetan@bajaj.com
-      phone: 7458963259
-      fee: 1600
-      experience: 8
+      email: pareek@bajaj.com
+      phone: 7458963269
+      fee: 1900
+      experience: 10
     type: object
     properties:
       name:
@@ -463,10 +511,10 @@ definitions:
     title: sendpatientdetailsrequest
     example:
       name: Harshit Aggarwal
-      username: ha5409@srm
+      username: ha5409@srm1
       password: hala_madrid
-      email: ha5409@srm.co.in
-      phone: 17891497854
+      email: ha5409@srm.com
+      phone: 17891497855
       address: California, USA
     type: object
     properties:
