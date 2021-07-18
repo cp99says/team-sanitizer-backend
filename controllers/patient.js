@@ -99,3 +99,26 @@ exports.send_medical_details = async (req, res) => {
     res.json(error);
   }
 };
+
+exports.get_patient_by_unique_id = async (req, res) => {
+  try {
+    const id = req.query.unique_id;
+    const data = await patient_model
+      .findOne({ unique_id: id })
+      .select("-password");
+    if (data == null) {
+      return res.json({
+        status: "failure",
+        message: `patient with unique_id ${id} not found`,
+      });
+    } else {
+      return res.json({
+        status: "success",
+        data,
+      });
+    }
+  } catch (error) {
+    console.log(error);
+    res.json(error);
+  }
+};

@@ -44,7 +44,7 @@ exports.login = async (req, res, next) => {
         status: data[0].status,
       },
       process.env.jwtSecret,
-      { expiresIn: "30m" }
+      { expiresIn: "4h" }
     );
     var decoded_values = jwt.decode(token, process.env.jwtSecret);
     // console.log(decoded_values);
