@@ -28,7 +28,7 @@ exports.send_doctor_details = async (req, res) => {
     const doctor_details = await data.save();
     res.status(201).json({
       status: "success",
-      doctor_details,
+      message: `doctor created with username ${req.body.username}`,
     });
   } catch (err) {
     res.send(err);
