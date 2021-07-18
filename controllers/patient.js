@@ -11,7 +11,7 @@ exports.send_patient_details = async (req, res) => {
     var date = moment().utcOffset("+05:30").format("MMMM Do YYYY, h:mm:ss a");
     const data = new patient_model({
       name: req.body.name,
-      patient_id: uuidv4(),
+      unique_id: uuidv4(),
       username: req.body.username,
       password: hashedPassword,
       email: req.body.email,

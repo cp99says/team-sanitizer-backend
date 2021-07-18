@@ -12,7 +12,7 @@ exports.send_doctor_details = async (req, res) => {
     var date = moment().utcOffset("+05:30").format("MMMM Do YYYY, h:mm:ss a");
     const data = new doctor_profile({
       name: req.body.name,
-      doctor_id: uuidv4(),
+      unique_id: uuidv4(),
       username: req.body.username,
       password: hashedPassword,
       email: req.body.email,
