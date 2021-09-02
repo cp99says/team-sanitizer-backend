@@ -11,7 +11,7 @@ const swaggerDocs = yamljs.load("./swagger.yaml");
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 mongoose.connect(
-  "mongodb+srv://chetan:hackRx123@cluster0.52tae.mongodb.net/sanitizer?retryWrites=true&w=majority",
+  "",
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
